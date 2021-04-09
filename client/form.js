@@ -1,4 +1,4 @@
-// Đối tượng `Validator`
+
 function Validator(options) {
     function getParent(element, selector) {
         while (element.parentElement) {
@@ -96,7 +96,7 @@ function Validator(options) {
                     }, {});
                     options.onSubmit(formValues);
                 }
-                // Trường hợp submit với hành vi mặc định
+                
                 else {
                     formElement.submit();
                 }
