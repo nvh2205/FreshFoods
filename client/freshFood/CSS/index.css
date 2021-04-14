@@ -62,7 +62,6 @@ html,body {
     display: block;
     margin-top: 20px;
 }
-
 .title--white{
     color: white;
     border-bottom: 1px solid #333;
@@ -81,12 +80,15 @@ html,body {
     color: #44813E;
     font-weight: bold;
     letter-spacing: 0.5px;
+    display: inline;
 }
 .heading p{
     text-transform: capitalize;
     letter-spacing: 4px;
     color: black;
     font-size: 17px;
+    margin-top: 1rem;
+    text-align: center;
 }
 .heading p::after {
     content: '';
@@ -109,6 +111,7 @@ header{
 header p{
     font-size: 14px;
     font-weight: 700;
+    text-align: right;
 }
 header .phoneNumb {
     text-decoration: none;
@@ -127,13 +130,15 @@ header .phoneNumb:hover {
 
 #movieNavBar .navbar-nav {
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    
 }
 
 #movieNavBar .navbar-nav .nav-link{
     color: white;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     line-height: 0.8em;
-    padding: 20px 24px;
+    padding: 20px;;
+    
 }
 
 #headerFixed{
@@ -147,6 +152,7 @@ header .phoneNumb:hover {
     /* Không dùng all vì nó có thể gây ảnh hưởng đến các thuộc tính khác ở trên,sử dụng đúng transform để hiệu ứng kéo trượt mượt mà */
     transition: transform 0.5s;
     z-index: 20;
+    box-shadow: 0px 5px 16px 3px rgb(0 0 0 / 33%);
 }
 
 /* CAROUSEL CHO MÓN CHÍNH */
@@ -358,10 +364,20 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
 .ThanhVien__col {
     padding: 2rem;
 }
+.ThanhVien__box {
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 3px 9px 20px 1px rgb(0 0 0 / 14%);
+    transition: all 0.5s;
+}
 .ThanhVien__item img {
     width: 55%;
     border-radius: 50%;
     border: 3.7px solid #61aa30;
+    transition: transform 0.7s;
+}
+.ThanhVien__item img:hover {
+    transform: scale(0.7);
 }
 .ThanhVien__item h3 {
     color: #61aa30;
@@ -382,12 +398,147 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
     margin: 10px 0 0;
     letter-spacing: 1px;
 }
-
+.ThanhVien__item:hover .ThanhVien__box {
+    transform: translateY(-26px);
+}
 /* SẢN PHẨM : Món Ngon và Đi Chợ */
+.SanPham__content>h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 1px;
+    margin: 1.6rem 0;
+}
+.SanPham__content .MonNgon h5 {
+    color: #61aa30;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    transform: translateZ(40px);
+}
+.SanPham__content .MonNgon p {
+    color: rgb(48, 48, 48);
+    font-size: 1rem;
+    line-height: 1.7em;
+    margin: 10px 0 0;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    transform: translateZ(20px);
+}
+.MonNgon img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.SanPham__content .MonNgon a {
+    padding: 10px 20px;
+    border: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(to right, #7ca342,#276821);
+    outline: none;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transform: translateZ(60px);
+}
+.SanPham__content .MonNgon__card {
+    border: 3.2px solid #61aa30;
+    border-radius: 15px;
+    /* overflow: hidden; */
+    /* transform-style: preserve-3d; */
+    /* transform: perspective(100px) */
+    box-shadow: 5px 12px 26px 1px rgb(0 0 0 / 17%);
+}
+
+/* DiCho */
+/* .DiCho .owl-carousel {
+    padding: 0 2rem;
+} */
+.DiCho h3 {
+    color: #61aa30;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding-bottom: 12px;
+    padding-right: 1rem;
+}
+.DiCho .item {
+    padding: 0px 1rem;
+    margin-bottom: 3rem;
+}
+.DiCho .item:hover .card--DiCho {
+    transform: translateY(-20px);
+}
+.DiCho .item:hover .card-img--DiCho {
+    transform: translate(-50%,-50%) scale(1.21);
+}
+.card--DiCho {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 2px 15px 18px 1px rgb(0 0 0 / 10%);
+    margin-top: 120px;
+    padding-top: 90px;
+    transition: transform 0.6s;
+}
+.card-img--DiCho {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 165px !important;
+    height: 165px;
+    border: 5px solid #61aa30;
+    transition: transform 0.6s;
+}
+.card--DiCho h5 {
+    color: #61aa30;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+}
+.card--DiCho p {
+    color: rgb(48, 48, 48);
+    font-size: 1rem;
+    line-height: 1.8em;
+    margin: 10px 0 0;
+    letter-spacing: 1px;
+}
+.card--DiCho a {
+    padding: 10px 20px;
+    border: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(to right, #7ca342,#276821);
+    outline: none;
+    font-weight: bold;
+    margin: 1rem 0;
+    transform: translateZ(60px);
+}
+.card--DiCho span {
+    font-weight: bold;
+    margin-top: 1rem;
+    letter-spacing: 1.5px;
+    margin-left: 6px;
+}
+/* Chỉnh phần button của OWl CAROUSEL */
+.DiCho .owl-theme .owl-dots .owl-dot span {
+    background-color: #57c23d;
+    opacity: 0.5;
+}
+.DiCho .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    opacity: 1;
+}
 
 /* HƯỚNG DẪN NẤU ĂN */
 #carouselHuongDan .carousel-caption {
-    top: 15%;
+    top: 10%;
+}
+#carouselHuongDan .carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 34px;
+    height: 34px;
 }
 #carouselHuongDan .carousel-caption .huongDan__title {
     text-align: left;
@@ -406,7 +557,7 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
     font-weight: bold;
     letter-spacing: 2px;
     color: #61aa30;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 #carouselHuongDan .huongDan__content h3 {
     font-size: 2.2rem;
@@ -417,20 +568,32 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
 .huongDan__nguyenLieu .col-6{
     font-size: 1rem;
 }
-.huongDan__thoiGian p {
+.huongDan__thoiGian .thoiGian1 {
+    font-size: 1.2rem;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+}
+.huongDan__thoiGian p {
+    margin-bottom: 10px;
+}
+.huongDan__nguyenLieu p {
+    margin-bottom: 5px;
+}
+.huongDan__nguyenLieu .nguyenLieu {
+    font-weight: bold;
+    letter-spacing: 1.5px;
 }
 .huongDan__nguyenLieu h4 {
     font-size: 1.5 rem;
     letter-spacing: 3px;
     margin-bottom: 10px;
     font-weight: bold;
+    color: #61aa30;
 }
-.comingSoon__video {
+.huongDan__video {
     position: relative;
 }
-.comingSoon__video i {
+.huongDan__video i {
     position: absolute;
     top: 50%;
     right: 50%;
@@ -444,13 +607,12 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
     border-radius: 50%;
     font-size: 25px;
     transition: all 0.7s;
+    box-shadow: 0 0 23px 0 #dbe9d2;
 }
-.comingSoon__video:hover i {
+.huongDan__video:hover i {
     /* Phải viết lại translate vì mặc định nó sẽ để là 0: khiến thẻ không được căn giữa như trên */
-    transform:translate(50%,-50%) scale(0.8);
+    transform:translate(50%,-50%) scale(1.5);
 }
-
-
 
 /* THÀNH QUẢ ĐẠT ĐƯỢC */
 .ThanhQua__content {
@@ -658,4 +820,236 @@ footer a:hover {
     text-align: center;
     line-height: 40px;
     border-radius: 5px;
+    box-shadow: 0px 2px 20px 1px rgb(0 0 0 / 28%);
+}
+
+/* MODAL USER LOGIN */
+.modal--LogIn .modal-body {
+    padding: 2rem 4rem;
+}
+.modal--LogIn h5 {
+    font-size: 38px;
+    color: #61aa30;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+.modal--LogIn label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.modal--LogIn .btn--LogIn {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #61aa30;
+    border-color: #61aa30;
+    color: white;
+    letter-spacing: 1px;
+    box-shadow: 3px 9px 15px 1px rgb(0 0 0 / 15%);
+}
+.modal--LogIn .btn--FB {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #3c5a9a;
+    border-color: #3c5a9a;
+    color: white;
+    letter-spacing: 1px;
+    box-shadow: 3px 9px 15px 1px rgb(0 0 0 / 15%);
+}
+.modal--LogIn .theP1 {
+    font-size: 14px;
+    color: rgb(112, 112, 112);
+    line-height: 1.2;
+    padding: 1rem .5rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+
+
+
+/* RESPONSIVE Ở GIAO DIỆN MOBILE */
+/* HEADER */
+@media screen and (max-width:575.98px){
+    header p {
+        text-align: center!important;
+        font-size: 3.2vw;
+    }
+    header .navbar-toggler-icon {
+        color: white;
+        line-height: 1.5em;
+    }
+    header .navbar-toggler {
+        color: #61aa30;
+    }
+    header .navbar-toggler:focus{
+        outline: none;
+    }
+    header .navbar-collapse {
+        background-color: #101010;
+        text-align: center;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        
+    }
+    #movieNavBar .navbar-nav .active .nav-link {
+        color: #61aa30;
+    }
+    .line.active::after {
+        width: 0%;
+    }
+}
+
+/* CAROUSEL CHO MÓN CHÍNH */
+@media screen and (max-width:575.98px){
+    #carouselMonChinh .carousel-item .carousel-caption h2 {
+        font-size: 7vw;
+        line-height: 10vw;
+        margin-bottom: 10px;
+    }
+    .movieCarousel__trailer button {
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        color: white;
+        background: linear-gradient(to right, #7ca342,#276821);
+    }
+    .movieCarousel__trailer {
+        margin-top: 1.5rem;
+    }
+    #carouselMonChinh .carousel-indicators {
+        bottom: 50px;
+    }
+}
+
+/* GIỚI THIỆU THÀNH VIÊN */
+@media screen and (max-width:575.98px){
+    .ThanhVien__item h3 {
+        font-size: 6vw;
+        margin-top: 1rem;
+        margin-bottom: 00.7rem;
+    }
+    .ThanhVien__item h4 {
+        font-size: 4vw;
+        margin: 0.5rem 0 0.2rem;
+    }
+    .ThanhVien__item p {
+        
+        font-size: 3.7vw;
+        line-height: 1.8em;
+        margin: 10px 0 0;
+        letter-spacing: 1.2px;
+    }
+}
+
+/* SẢN PHẨM : Món Ngon và Đi Chợ */
+@media screen and (max-width:575.98px){
+    /* .MonNgon .col-4 {
+        padding: 6px;
+    } */
+    .SanPham__content>h2 {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+    .SanPham__content .card-body {
+        padding: 8px;
+    }
+    .SanPham__content .MonNgon h5 {
+        font-size: 1rem;
+        margin: 0.8rem 0;
+        /* transform: translateZ(40px); */
+    }
+    .SanPham__content .MonNgon p {
+        font-size: 0.8rem;
+        line-height: 1.6em;
+        margin: 10px 0 0;
+        margin-bottom: 10px;
+        /* transform: translateZ(20px); */
+    }
+    .SanPham__content .MonNgon a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        /* transform: translateZ(60px); */
+    }
+
+}
+
+/* HƯỚNG DẪN NẤU ĂN */
+@media screen and (max-width:575.98px){
+    #carouselHuongDan .carousel-caption {
+        top: 0%;
+    }
+    #carouselHuongDan .carousel-caption .huongDan__title {
+        font-size: 3.2vw;
+        margin-bottom: 0px;
+        padding-bottom: 6px;
+    }
+    .huongDan__video {
+        width: 75%;
+        margin: 0 auto;
+    }
+    .huongDan__video i {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #44813E;
+        line-height: 40px;
+        font-size: 15px;
+    }
+}
+
+/* THÀNH QUẢ ĐẠT ĐƯỢC */
+@media screen and (max-width:575.98px){
+    .heading h2 {
+        font-size: 5.5vw;
+    }
+    .heading p {
+    letter-spacing: 2px;
+    font-size: 3.6vw;
+    margin-top: 1rem;
+    }
+    .ThanhQua__item {
+        margin-bottom: 2rem;
+    }
+}
+
+/* PHẢN HỒI CỦA KHÁCH HÀNG */
+@media screen and (max-width:575.98px){
+    .PhanHoi__bottom {
+        width: 75%;
+    }
+    .ThanhQua__item h3 {
+        margin-top: 1rem;
+        font-size: 4.5vw;
+    }
+}
+
+/* FOOTER */
+@media screen and (max-width:575.98px){
+    .section {
+        padding: 4.5rem 0;
+    }
+    .footer__content li {
+        margin-bottom: 10px;
+    }
+}
+
+/* BACK TO TOP : Thu nhỏ lại nút này */
+@media screen and (max-width:575.98px){
+    /* Chỉnh lại vị trí và kích thước cho nút backToTop */
+    .backToTop {
+        right: 15px;
+        bottom: 75px;
+    }
+    .backToTop i {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+        line-height: 35px;
+    }
 }
