@@ -505,7 +505,7 @@ thẻ nào có z-index lớn hơn thì nó sẽ hiển thị đè lên thẻ bé
     margin: 10px 0 0;
     letter-spacing: 1px;
 }
-.card--DiCho a {
+.card--DiCho a{
     padding: 10px 20px;
     border: none;
     font-size: 0.8rem;
