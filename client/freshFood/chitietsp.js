@@ -31,7 +31,7 @@ if (usersLogin) {
     //Chào mừng người dùng trên thanh công cụ
     let header_user = document.querySelector('.header_user');
     header_user.textContent = ` ${usersLogin.nameUser}`;
-
+    arrCart=[...usersLogin.cart];
     cart_ = usersLogin.cart.length;
 
 }

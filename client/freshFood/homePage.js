@@ -81,7 +81,7 @@ if(usersLogin){
 
 
 
-console.log(usersLogin);
+
 //Thêm vào giỏ hàng
 function addToCart_(cart_){
     let pay_cart=document.querySelectorAll(".pay_cart")
@@ -214,7 +214,7 @@ Array.from(addToCart).forEach((item,index)=>{
             arrCart.push(objBuyProduct)
             
             sumCart=cart_+ arrCart.length
-            console.log(sumCart,"cart_");
+           
             addToCart_(sumCart);
             //updateUser(usersLogin.id,{"cart":arrCart});
         }
