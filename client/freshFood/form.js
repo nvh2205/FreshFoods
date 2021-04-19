@@ -1,4 +1,13 @@
 
+import {createUser} from '../validatorUser.js'
+import {updateUser} from '../validatorUser.js'
+import {listUser} from '../validatorUser.js'
+
+const dataUsers= await listUser();
+
+
+
+
 function Validator(options) {
     function getParent(element, selector) {
         while (element.parentElement) {
@@ -18,7 +27,7 @@ function Validator(options) {
 
         // Lấy ra các rules của selector
         var rules = selectorRules[rule.selector];
-        
+
         // Lặp qua từng rule & kiểm tra
         // Nếu có lỗi thì dừng việc kiểm
         for (var i = 0; i < rules.length; ++i) {
@@ -34,8 +43,8 @@ function Validator(options) {
             }
             if (errorMessage) break;
         }
-        
-        
+
+
         if (errorMessage) {
             errorElement.innerText = errorMessage;
             getParent(inputElement, options.formGroupSelector).classList.add('invalid');
@@ -70,8 +79,8 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
-                        
-                        switch(input.type) {
+
+                        switch (input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
                                 break;
@@ -96,7 +105,7 @@ function Validator(options) {
                     }, {});
                     options.onSubmit(formValues);
                 }
-                
+
                 else {
                     formElement.submit();
                 }
@@ -109,7 +118,7 @@ function Validator(options) {
         options.rules.forEach(function (rule) {
 
             // Lưu lại các rules cho mỗi input
-           
+
             if (Array.isArray(selectorRules[rule.selector])) {
                 selectorRules[rule.selector].push(rule.test);
             } else {
@@ -119,7 +128,7 @@ function Validator(options) {
             var inputElements = formElement.querySelectorAll(rule.selector);
 
             Array.from(inputElements).forEach(function (inputElement) {
-               // Xử lý trường hợp blur khỏi input
+                // Xử lý trường hợp blur khỏi input
                 inputElement.onblur = function () {
                     validate(inputElement, rule);
                 }
@@ -129,7 +138,7 @@ function Validator(options) {
                     var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
                     errorElement.innerText = '';
                     getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
-                } 
+                }
             });
         });
     }
@@ -146,7 +155,7 @@ Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value ? undefined :  message || 'Bạn ko được để trống'
+            return value ? undefined : message || 'Bạn ko được để trống'
         }
     };
 }
@@ -156,7 +165,7 @@ Validator.isEmail = function (selector, message) {
         selector: selector,
         test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined :  message || 'Bạn vui lòng nhập email';
+            return regex.test(value) ? undefined : message || 'Bạn vui lòng nhập email';
         }
     };
 }
@@ -165,7 +174,7 @@ Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.length >= min ? undefined :  message || `Vui lòng nhập tối thiểu ${min} kí tự`;
+            return value.length >= min ? undefined : message || `Vui lòng nhập tối thiểu ${min} kí tự`;
         }
     };
 }
@@ -180,53 +189,78 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 }
 
 
-Validator.isPhone=function(selector,message){
-    return{
-        selector:selector,
-        test:function(value){
-            var checkPhone=/(84|0[3|5|7|8|9])+([0-9]{8})\b/g
-            return checkPhone.test(value) ? undefined  :  message || ' sdtVn';
+Validator.isPhone = function (selector, message) {
+    return {
+        selector: selector,
+        test: function (value) {
+            var checkPhone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g
+            return checkPhone.test(value) ? undefined : message || ' sdtVn';
         }
     }
 }
 
 
-var users=" http://localhost:8000/api/v1/users";
-let listUser=[];
 
-function getUsers() {
-    fetch(users)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function(data){
-        listUser.push(data);
-        console.log(data)
-        console.log(listUser);
-    });
-}
+//console.log(dataUsers);
+// var users = " http://localhost:8000/api/v1/users";
+// const dataUsers = [];
 
-getUsers();
+// function getUsers() {
+//     fetch(users)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             dataUsers.push(data);
+//             console.log(data)
+//             console.log(dataUsers);
+//         });
+// }
 
-function createUser(data) {
-    var options = {
-    method: "POST",
-    headers: {
-    "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-    };
-    fetch(users, options)
-    .then(function (response) {
-    return response.json();
-    })
-    .then(function(data){
-        listUser.push(data);
-    })
-}
+// getUsers();
+
+//  function createUser(data) {
+//     var options = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//     };
+//     fetch(users, options)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             dataUsers.push(data);
+//         })
+// }
+
+// function updateUser(id, data) {
+//     var options = {
+//         method: "PATCH",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//     };
+//     fetch(users + "/" + id, options)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+
+//             dataUsers1[0].data.data.forEach((item, index) => {
+//                 if (item.id == id) {
+//                     dataUsers[0].data.data[index].checkLogin = data;
+//                 }
+//             })
+//         });
+// }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+
+//document.addEventListener('DOMContentLoaded', function () {
     // Đăng kí--Contructor
     Validator({
         form: '#form-1',
@@ -245,8 +279,29 @@ document.addEventListener('DOMContentLoaded', function () {
             Validator.isRequired('#address'),
         ],
         onSubmit: function (data) {
-            createUser(data);
-            console.log(data);
+            let checkdataUsers=0;
+            let checkDangKi = document.querySelector("#Check_DangKi");
+            dataUsers[0].data.data.forEach((item,index) => {
+                
+                if (item.email === data.email || item.phoneNumber === data.phoneNumber) {
+                    checkDangKi.classList.remove("hidden");
+                    //setTimeout(location.reload(),400);
+
+                }
+                else{
+                    checkdataUsers++;
+                    checkDangKi.classList.add("hidden");
+                    
+                }
+            })
+            if(checkdataUsers===dataUsers[0].data.data.length){
+                data.checkLogin="false";
+                data.cart=[];
+                data.purchase_history=[];
+                alert("Đăng kí thành công");
+                createUser(data);
+            }
+
         }
     });
 
@@ -260,16 +315,25 @@ document.addEventListener('DOMContentLoaded', function () {
             Validator.minLength('#password', 6),
         ],
         onSubmit: function (data) {
-            let logInUser= listUser[0].data.data.find(function(items){
-                
-                return items.email==data.email&&items.password==data.password
+            let checkDangNhap = document.querySelector("#Check_DangNhap");
+            let logInUser = dataUsers[0].data.data.find(function (items) {
+
+                return items.email == data.email && items.password == data.password
             })
-            if(logInUser){
+            if (logInUser) {
+                //checkDangNhap.classList.add("hidden");
+                console.log(logInUser);
                 console.log('success');
-               // window.location.href='http://127.0.0.1:5501/FromValidition/index.html'
+                logInUser.checkLogin = "true";
+                const idCheckLoginUser = logInUser.id;
+                updateUser(idCheckLoginUser, { checkLogin: "true" });
+                //alert("Tc")
+                //window.location.href = 'http://127.0.0.1:5500/client/index.html'
+
             }
-            else{
-                alert('Sai tên đăng nhập hoặc mật khẩu');
+            else {
+                checkDangNhap.classList.remove("hidden");
+                //alert('Sai tên đăng nhập hoặc mật khẩu');
                 //location.reload();           
             }
             console.log(data);
@@ -278,22 +342,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-});
+//});
 
-var formElement1=document.querySelector("#form-1");
-formElement1.classList.add("hidden")
+// var formElement1 = document.querySelector("#form-1");
+// //formElement1.classList.add("hidden")
 
-var formElement2=document.querySelector("#form-2");
-formElement2.classList.add("hidden")
-let registration=document.querySelector('#dk');
-registration.onclick=function(){
-    formElement1.classList.remove("hidden")
-    formElement2.classList.add("hidden")
-}
+// var formElement2 = document.querySelector("#form-2");
+// //formElement2.classList.add("hidden")
+// let registration = document.querySelector('#dk');
+// registration.onclick = function () {
+//     formElement1.classList.remove("hidden")
+//     //formElement2.classList.add("hidden")
+// }
 
-let logIn=document.querySelector('#dn');
-logIn.onclick=function(){
-    formElement2.classList.remove("hidden")
-    formElement1.classList.add("hidden")
-}
+// let logIn = document.querySelector('#dn');
+// logIn.onclick = function () {
+//     formElement2.classList.remove("hidden")
+//     //formElement1.classList.add("hidden")
+// }
 
