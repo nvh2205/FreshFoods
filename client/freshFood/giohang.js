@@ -139,7 +139,7 @@ arrDeleteCook.forEach((item1, index) => {
 
         if (sessionStorage.getItem(`${"foods_" + item1.id + "_" + element.id}`)) {
             idStorage1 = sessionStorage.getItem(`${"foods_" + item1.id + "_" + element.id}`)
-            console.log("success");
+           // console.log("success");
             //sessionStorage.removeItem(`${"foods_" + item1.id + "_" + element.id}`);
 
         }
@@ -208,12 +208,12 @@ usersLogin.cart.forEach((item) => {
 
 //Hiển thị giỏ hàng
 if (usersLogin.cart.length > 0) {
-    
+    //console.log(usersLogin.cart);
     let cart_user = document.querySelector(".cart_user");
 
     usersLogin.cart.forEach((item) => {
         if (item.sesionStorage) {
-            
+
             cart_user.innerHTML += `<div class="row gioHang__content py-md-5 border-dark border-bottom delete__">
         <div class="col-5">
             <img class="img-fluid img_foods"  src="${item.imgProduct}" alt="">
@@ -229,10 +229,9 @@ if (usersLogin.cart.length > 0) {
             <button class="btn btn-success py-3 delete_product">Xóa sản phẩm</button>
         </div>
         </div>`
-            console.log(cart_user);
         }
         else {
-            
+
             // let price_unitPrice=item.unitPrice;
             // let price_total=item.total;
             cart_user.innerHTML += `<div class="row gioHang__content py-md-5 border-dark border-bottom delete__">
@@ -281,8 +280,8 @@ if (usersLogin.cart.length > 0) {
     //Lấy storage của món ăn
     let sesionStorage_food = document.querySelectorAll(".sesionStorage_food");
     let Storage_food = [...Array.from(sesionStorage_food)];
-    
-    console.log(Storage_food[0].textContent);
+    //console.log(img_all_foods[0].src, "a");
+
     Array.from(tang_button).forEach((item, index, arr) => {
         item.onclick = () => {
             amout = span_amonut[index].textContent;
@@ -363,18 +362,19 @@ if (usersLogin.cart.length > 0) {
     pay_all_foods.onclick = () => {
         let price_all = document.querySelector(".price_all");
         img_all_foods.forEach((item, index, arr) => {
+            //console.log(item);
             let parent_img=item.parentElement;
-            let sesionStorage_food=parent_img.querySelector(".sesionStorage_food");
-           
-            if(sesionStorage_food){
+            let p_child=parent_img.querySelector(".sesionStorage_food");
+            if(p_child){
                 let obj_foods = {
                     "name": `${name_all_foods[index].textContent}`,
                     "imgProduct": `${item.src}`,
                     "amount": `${span_amonut[index].textContent}`,
                     "total": `${arr_total[index].textContent}`,
-                    "storage_food":`${sesionStorage_food.textContent}`
+                    "storage_food":`${p_child.textContent}`
                 }
-                arrAllBuyFood.push(obj_foods);
+                    arrAllBuyFood.push(obj_foods);
+
             }
             else{
                 let obj_foods = {
@@ -385,10 +385,13 @@ if (usersLogin.cart.length > 0) {
                     //"storage_food":`${Storage_food[index].textContent}`
                 }
                 arrAllBuyFood.push(obj_foods);
+
             }
 
+           
+           
         })
-
+        //console.log(arrAllBuyFood),"123";
         let cart_hidden = document.querySelector(".cart_hidden");
 
         cart_hidden.classList.add("hidden");
@@ -473,7 +476,6 @@ else {
         let p_sesionStorage_food = document.querySelectorAll(".sesionStorage_food");
         
         let p_p_sesionStorage_foods = [...Array.from(p_sesionStorage_food)];
-
         p_p_sesionStorage_foods.forEach((item, index) => {
 
             let parent_p = item.parentElement;
@@ -481,7 +483,7 @@ else {
             
             a_chitietsp.onclick = function () {
                 sessionStorage.removeItem(idStorage1);
-                console.log(idStorage1);
+                //console.log(idStorage1);
                 sessionStorage.setItem(item.textContent, item.textContent);
                 window.open(
                     "chitietsp.html", "_blank");

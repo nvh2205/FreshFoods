@@ -1,4 +1,4 @@
-const Cook=" http://localhost:8000/api/v1/foods/1";
+const Cook=" http://localhost:3000/api/v1/foods/1";
 
 var listCook=[];
 
@@ -54,7 +54,7 @@ export const listFoods = async() => {
 
 
 //Get market
-const market=" http://localhost:8000/api/v1/foods/2";
+const market=" http://localhost:3000/api/v1/foods/2";
 
 var listMarket=[];
 

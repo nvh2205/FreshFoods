@@ -115,7 +115,7 @@ if(usersLogin){
 
 //Lấy cái cook đã xóa để tý nữa xóa Storage
 let arrDeleteCook=[];
-
+console.log(dataFoods,1)
 dataFoods.forEach((item, index) => {
 
 

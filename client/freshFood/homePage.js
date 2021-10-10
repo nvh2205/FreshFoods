@@ -113,7 +113,7 @@ function displayPrice(price){
 
 
 let MonNgon__ = document.querySelector(".MonNgon__")
-
+console.log(dataFoods,23)
 dataFoods.forEach((item, index) => {
     MonNgon__.innerHTML += `
     

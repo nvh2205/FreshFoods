@@ -328,7 +328,7 @@ Validator.isPhone = function (selector, message) {
                 const idCheckLoginUser = logInUser.id;
                 updateUser(idCheckLoginUser, { checkLogin: "true" });
                 //alert("Tc")
-                //window.location.href = 'http://127.0.0.1:5500/client/index.html'
+                window.location.href = 'index.html'
 
             }
             else {

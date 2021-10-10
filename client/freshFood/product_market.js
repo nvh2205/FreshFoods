@@ -25,6 +25,7 @@ const usersLogin = dataUsers[0].data.data.find((item) => {
 })
 
 if (usersLogin) {
+    arrCart=[...usersLogin.cart];
     let user_LogIn = document.querySelectorAll(".user_LogIn");
     Array.from(user_LogIn).forEach((item) => {
         item.removeAttribute('data-toggle');
@@ -167,7 +168,7 @@ function displayMenu(copyMenuCook, product__) {
                                             
                             <input class="buy_"  type="number" min="0" max="50" step="1" value="1" style="width: 50px;height:35px;background-color: #;">
                             <span>${price} - ${element.quantitative}</span>
-                        <h1 style="display:none">${element.price}</h1>
+                        <h1 style="display:none">${element.img}</h1>
                     </div>
                 </div>
             </div>`
@@ -478,7 +479,23 @@ high_to_low.onclick = () => {
 
 
 
-
+/*
+                arr[index].innerHTML += `<div class="item">
+                <div class="card card--DiCho w-100">
+                    <img src="${element.img}"
+                        class="card-img-top card-img--DiCho img-fluid img-circle rounded-circle" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${element.name}</h5>
+                        <p class="card-text">Thực phẩm tươi sạch từ Việt Nam</p>
+                            <a href="#" class="btn btn-primary add_cart"><i class="fa fa-shopping-cart mr-md-2 "></i>Thêm vào giỏ hàng</a>
+                                            
+                            <input class="buy_"  type="number" min="0" max="50" step="1" value="1" style="width: 50px;height:35px;background-color: #;">
+                            <span>${price} - ${element.quantitative}</span>
+                        <h1 style="display:none">${element.price}</h1>
+                    </div>
+                </div>
+            </div>`
+*/
 
 
 
